@@ -1,0 +1,10 @@
+# Site settings
+title: Socache - social cache cleaner
+tag_text: Socache
+description: Socache - is a social cache cleaner
+
+# Build settings
+markdown: kramdown
+exclude: ["README.md"]
+sass:
+  style: compressed
