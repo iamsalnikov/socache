@@ -1,6 +1,7 @@
 package vk
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
@@ -43,8 +44,8 @@ func (v VK) sendRequest(url string) (bool, error) {
 		return false, err
 	}
 
-	answer := new(Answer)
-	err = answer.UnmarshalJSON(body)
+	var answer Answer
+	err = json.Unmarshal(body, &answer)
 
 	if err != nil {
 		return false, err
