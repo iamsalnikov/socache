@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/asaskevich/govalidator"
+	"github.com/iamsalnikov/socache/helpers/validator"
 )
 
 // Facebook is a cache cleaner for facebook.com
@@ -24,7 +24,7 @@ func New() *Facebook {
 
 // Clear function drop cache
 func (f Facebook) Clear(url string) (bool, error) {
-	if !govalidator.IsURL(url) {
+	if !validator.IsURL(url) {
 		return false, errors.New(url + " - is not valid url")
 	}
 

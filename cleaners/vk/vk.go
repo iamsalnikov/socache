@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/asaskevich/govalidator"
+	"github.com/iamsalnikov/socache/helpers/validator"
 )
 
 // VK is a cache cleaner for vk.com
@@ -23,7 +23,7 @@ func New() *VK {
 
 // Clear function drop cache
 func (v VK) Clear(url string) (bool, error) {
-	if !govalidator.IsURL(url) {
+	if !validator.IsURL(url) {
 		return false, errors.New(url + " - is not valid url")
 	}
 
