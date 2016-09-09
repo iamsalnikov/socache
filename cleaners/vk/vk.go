@@ -13,8 +13,8 @@ type VK struct {
 	BaseURL string
 }
 
-// NewVK create VK object
-func NewVK() *VK {
+// New create VK object
+func New() *VK {
 	return &VK{
 		BaseURL: "https://api.vk.com/method/pages.clearCache",
 	}

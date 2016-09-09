@@ -21,8 +21,8 @@ func NewServer() *Server {
 	server := new(Server)
 
 	server.cleanersMap = make(map[string]cleaners.CleanerInterface)
-	server.cleanersMap["vk"] = vk.NewVK()
-	server.cleanersMap["facebook"] = facebook.NewFacebook()
+	server.cleanersMap["vk"] = vk.New()
+	server.cleanersMap["facebook"] = facebook.New()
 
 	server.defaultCleaners = make([]string, 2)
 	for key := range server.cleanersMap {

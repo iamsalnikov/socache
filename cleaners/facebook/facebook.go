@@ -14,8 +14,8 @@ type Facebook struct {
 	BaseURL string
 }
 
-// NewFacebook function create Facebook cleaner object
-func NewFacebook() *Facebook {
+// New function create Facebook cleaner object
+func New() *Facebook {
 	return &Facebook{
 		BaseURL: "https://graph.facebook.com",
 	}
