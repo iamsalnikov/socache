@@ -53,5 +53,10 @@ func (f Facebook) sendRequest(address string) (bool, error) {
 	}
 
 	var nilError AnswerError
-	return answer.Error == nilError, errors.New(answer.Error.Message)
+
+	if answer.Error == nilError {
+		return true, nil
+	}
+
+	return false, errors.New(answer.Error.Message)
 }

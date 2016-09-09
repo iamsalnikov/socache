@@ -51,5 +51,9 @@ func (v VK) sendRequest(url string) (bool, error) {
 		return false, err
 	}
 
-	return answer.Response == 1, nil
+	if answer.Response == 1 {
+		return true, nil
+	}
+
+	return false, errors.New("Response from VK is 0")
 }
