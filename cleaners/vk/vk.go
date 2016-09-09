@@ -1,11 +1,12 @@
 package vk
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
 
-	"github.com/asaskevich/govalidator"
+	"github.com/iamsalnikov/socache/helpers/validator"
 )
 
 // VK is a cache cleaner for vk.com
@@ -13,8 +14,8 @@ type VK struct {
 	BaseURL string
 }
 
-// NewVK create VK object
-func NewVK() *VK {
+// New create VK object
+func New() *VK {
 	return &VK{
 		BaseURL: "https://api.vk.com/method/pages.clearCache",
 	}
@@ -22,7 +23,7 @@ func NewVK() *VK {
 
 // Clear function drop cache
 func (v VK) Clear(url string) (bool, error) {
-	if !govalidator.IsURL(url) {
+	if !validator.IsURL(url) {
 		return false, errors.New(url + " - is not valid url")
 	}
 
@@ -43,8 +44,8 @@ func (v VK) sendRequest(url string) (bool, error) {
 		return false, err
 	}
 
-	answer := new(Answer)
-	err = answer.UnmarshalJSON(body)
+	var answer Answer
+	err = json.Unmarshal(body, &answer)
 
 	if err != nil {
 		return false, err

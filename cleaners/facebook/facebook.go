@@ -1,12 +1,13 @@
 package facebook
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 
-	"github.com/asaskevich/govalidator"
+	"github.com/iamsalnikov/socache/helpers/validator"
 )
 
 // Facebook is a cache cleaner for facebook.com
@@ -14,8 +15,8 @@ type Facebook struct {
 	BaseURL string
 }
 
-// NewFacebook function create Facebook cleaner object
-func NewFacebook() *Facebook {
+// New function create Facebook cleaner object
+func New() *Facebook {
 	return &Facebook{
 		BaseURL: "https://graph.facebook.com",
 	}
@@ -23,7 +24,7 @@ func NewFacebook() *Facebook {
 
 // Clear function drop cache
 func (f Facebook) Clear(url string) (bool, error) {
-	if !govalidator.IsURL(url) {
+	if !validator.IsURL(url) {
 		return false, errors.New(url + " - is not valid url")
 	}
 
@@ -45,8 +46,8 @@ func (f Facebook) sendRequest(address string) (bool, error) {
 		return false, err
 	}
 
-	answer := new(Answer)
-	err = answer.UnmarshalJSON(body)
+	var answer Answer
+	err = json.Unmarshal(body, &answer)
 	if err != nil {
 		return false, err
 	}
