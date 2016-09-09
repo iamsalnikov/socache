@@ -2,7 +2,7 @@
 layout: default
 ---
 
-[Socache](http://iamsalnikov.github.io/socache) is a service for reseting social cache.
+Before `socache`, we had to send to every single social network to clear the cache. Now we need to send a request to the `socache`, specifying a list of social networks in which we need to clear the cache!
 
 ## Installation
 

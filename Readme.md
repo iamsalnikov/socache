@@ -1,6 +1,6 @@
 # Social cache cleaner
 
-`socache` is a social cache cleaner.
+Before `socache`, we had to send to every single social network to clear the cache. Now we need to send a request to the `socache`, specifying a list of social networks in which we need to clear the cache!
 
 ## Installation
 
