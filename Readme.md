@@ -6,15 +6,8 @@
 
 You can install `socache` by three ways:
 
-1. docker
-2. go get
-3. build from source
-
-### Installation by docker
-
-```bash
-docker run --rm -p 9099:9099 iamsalnikov/socache:0.1
-```
+1. go get
+2. build from source
 
 ### Installation by `go get`
 
